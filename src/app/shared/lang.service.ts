@@ -11,9 +11,9 @@ const languageKey = '__lang';
   providedIn: 'root',
 })
 export class LangService {
-  isSingleLang = false;
+  isSingleLang = true;
   renderer: Renderer2;
-  defaultLanguage = localStorage.getItem(languageKey) || 'en-US';
+  defaultLanguage = localStorage.getItem(languageKey) || 'es-ES';
   supportedLanguages: Language[] = [
     { code: 'en-US', direction: 'ltr', label: 'English', shorthand: 'en' },
     { code: 'es-ES', direction: 'ltr', label: 'Español', shorthand: 'es' },

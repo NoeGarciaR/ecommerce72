@@ -1,34 +1,34 @@
 <div class="card auth-card">
   <div class="position-relative image-side ">
-    <p class=" text-white h2">MAGIC IS IN THE DETAILS</p>
+    <p class=" text-white h2">E-COMMERCE72</p>
     <p class="white mb-0">
-      Please use the form to register.
-      <br>If you are a member, please
-      <a routerLink="/user/login" class="white white-underline-link">login</a>.
+      Por favor ingresa los datos que se te piden a conticuación
+      <br>Sí ya cuentas con una cuenta e-commerce puedes ingresar aqui
+      <a routerLink="/user/login" class="white white-underline-link"> INICIAR SESIÓN</a>.
     </p>
   </div>
   <div class="form-side">
     <a class="c-pointer">
       <span class="logo-single"></span>
     </a>
-    <h6 class="mb-4">Register</h6>
+    <h6 class="mb-4">Registro</h6>
 
     <form #registerForm="ngForm" novalidate  (ngSubmit)="onSubmit()">
       <label class="form-group has-float-label">
         <input class="form-control" required ngModel #displayName="ngModel" name="displayName"/>
         <span>{{ 'user.fullname' | translate }}</span>
-        <div *ngIf="!displayName.valid && registerForm.submitted" class="invalid-tooltip">Name is required!</div>
+        <div *ngIf="!displayName.valid && registerForm.submitted" class="invalid-tooltip">El nombre es requerido</div>
       </label>
       <label class="form-group has-float-label">
         <input class="form-control" required email ngModel #email="ngModel" name="email"/>
         <span>{{ 'user.email' | translate }}</span>
-        <div *ngIf="!email.valid && registerForm.submitted" class="invalid-tooltip">Email is required!</div>
-        <div *ngIf="email?.errors?.email && registerForm.submitted" class="invalid-tooltip">Email must be a valid address!</div>
+        <div *ngIf="!email.valid && registerForm.submitted" class="invalid-tooltip">El correo es requerido</div>
+        <div *ngIf="email?.errors?.email && registerForm.submitted" class="invalid-tooltip">El correo no es valido</div>
       </label>
       <label class="form-group has-float-label">
         <input class="form-control" type="password" placeholder="" required ngModel #password="ngModel" name="password"/>
         <span>{{ 'user.password' | translate }}</span>
-        <div *ngIf="!password.valid && registerForm.submitted" class="invalid-tooltip">Password is required!</div>
+        <div *ngIf="!password.valid && registerForm.submitted" class="invalid-tooltip">La contraseña es requerida</div>
       </label>
       <div class="d-flex justify-content-between align-items-center">
         <a routerLink="/user/forgot-password">{{ 'user.forgot-password' | translate }}?</a>
