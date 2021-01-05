@@ -1,4 +1,4 @@
-<h5 class="mb-4">Agregar un nuevo Proyecto</h5>
+<h5 class="mb-4">Nueva Tienda</h5>
 <div class="card">
   <div class="card-body">
     <aw-wizard #wizard [navBarLayout]="'large-empty-symbols'">
@@ -19,7 +19,7 @@
               <ng-option *ngFor="let item of designs" [value]="item.id">{{ item.nombre }}</ng-option>
             </ng-select>
             <div class="row">
-              <img width="350px" height="450px" class="mt-4 mx-auto" [src]="designs[selectedDesign].url">
+              <img width="250px" height="350px" class="mt-4 mx-auto" [src]="designs[selectedDesign].url">
             </div>
           </div>
 
@@ -29,7 +29,7 @@
               <ng-option *ngFor="let item of colors" [value]="item.id">{{ item.nombre }}</ng-option>
             </ng-select>
             <div class="row">
-              <img width="350px" height="450px" class="mt-4 mx-auto" [src]="colors[selectedColor].url">
+              <img width="250px" height="350px" class="mt-4 mx-auto" [src]="colors[selectedColor].url">
             </div>
           </div>
 
