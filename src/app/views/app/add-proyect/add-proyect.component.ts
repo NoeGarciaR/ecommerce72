@@ -19,20 +19,20 @@ export class AddProyectComponent implements OnInit {
   selectedColor: number;
 
   public designs = [
-    { id: 1, nombre: 'Exprés', url: 'https://e-commerce72.com/wp-content/uploads/2020/06/tienda-online-1-241x300.jpg' },
-    { id: 2, nombre: 'Gráfico', url: 'https://e-commerce72.com/wp-content/uploads/2020/06/ecommerce-en-72-horas-mexico-1-241x300.jpg' },
-    { id: 3, nombre: 'Práctico', url: 'https://e-commerce72.com/wp-content/uploads/2020/06/tienda-online-en-72-241x300.jpg' },
-    { id: 4, nombre: 'Aventurero', url: 'https://e-commerce72.com/wp-content/uploads/2020/06/e-commerce-72-tienda-online-1-241x300.jpg' },
-    { id: 5, nombre: 'Sin Límites', url: 'https://e-commerce72.com/wp-content/uploads/2020/06/cuanto-cuesta-una-tienda-virtual-241x300.jpg' },
-    { id: 6, nombre: 'Minimalista', url: 'https://e-commerce72.com/wp-content/uploads/2020/06/cuanto-cuesta-un-e-commerce-241x300.jpg' }
+    { id: 0, nombre: 'Exprés', url: 'https://e-commerce72.com/wp-content/uploads/2020/06/tienda-online-1-241x300.jpg' },
+    { id: 1, nombre: 'Gráfico', url: 'https://e-commerce72.com/wp-content/uploads/2020/06/ecommerce-en-72-horas-mexico-1-241x300.jpg' },
+    { id: 2, nombre: 'Práctico', url: 'https://e-commerce72.com/wp-content/uploads/2020/06/tienda-online-en-72-241x300.jpg' },
+    { id: 3, nombre: 'Aventurero', url: 'https://e-commerce72.com/wp-content/uploads/2020/06/e-commerce-72-tienda-online-1-241x300.jpg' },
+    { id: 4, nombre: 'Sin Límites', url: 'https://e-commerce72.com/wp-content/uploads/2020/06/cuanto-cuesta-una-tienda-virtual-241x300.jpg' },
+    { id: 5, nombre: 'Minimalista', url: 'https://e-commerce72.com/wp-content/uploads/2020/06/cuanto-cuesta-un-e-commerce-241x300.jpg' }
   ];
 
   public colors = [
-    { id: 1, nombre: 'Técnológico', url: 'https://e-commerce72.com/wp-content/uploads/2020/06/Paleta-de-color_TECNOLOGICO.jpg' },
-    { id: 2, nombre: 'Fashion', url: 'https://e-commerce72.com/wp-content/uploads/2020/06/Paleta-de-color_FASHION.jpg' },
-    { id: 3, nombre: 'Dinámico', url: 'https://e-commerce72.com/wp-content/uploads/2020/06/Paleta-de-color_DINAMICO.jpg' },
-    { id: 4, nombre: 'Formal', url: 'https://e-commerce72.com/wp-content/uploads/2020/06/Paleta-de-color_FORMAL.jpg' },
-    { id: 5, nombre: 'Natural', url: 'https://e-commerce72.com/wp-content/uploads/2020/06/Paleta-de-color_NATURAL.jpg' },
+    { id: 0, nombre: 'Técnológico', url: 'https://e-commerce72.com/wp-content/uploads/2020/06/Paleta-de-color_TECNOLOGICO.jpg' },
+    { id: 1, nombre: 'Fashion', url: 'https://e-commerce72.com/wp-content/uploads/2020/06/Paleta-de-color_FASHION.jpg' },
+    { id: 2, nombre: 'Dinámico', url: 'https://e-commerce72.com/wp-content/uploads/2020/06/Paleta-de-color_DINAMICO.jpg' },
+    { id: 3, nombre: 'Formal', url: 'https://e-commerce72.com/wp-content/uploads/2020/06/Paleta-de-color_FORMAL.jpg' },
+    { id: 4, nombre: 'Natural', url: 'https://e-commerce72.com/wp-content/uploads/2020/06/Paleta-de-color_NATURAL.jpg' },
   ];
 
   posting = false;
@@ -40,8 +40,8 @@ export class AddProyectComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.selectedDesign = 1;
-    this.selectedColor = 1;
+    this.selectedDesign = 0;
+    this.selectedColor = 0;
   }
 
   onNextStep1() {
