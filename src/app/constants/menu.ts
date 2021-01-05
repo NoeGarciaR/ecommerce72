@@ -9,6 +9,13 @@ export interface IMenuItem {
 
 const data: IMenuItem[] = [
   {
+    id: 'homepage',
+    icon: 'simple-icon-layers',
+    label: 'Proyectos',
+    to: '/app/proyects'
+  },
+  /*
+  {
     id: 'vien',
     icon: 'iconsminds-air-balloon-1',
     label: 'menu.vien',
@@ -47,5 +54,6 @@ const data: IMenuItem[] = [
     to: 'https://vien-docs.coloredstrategies.com/',
     newWindow: true
   }
+   */
 ];
 export default data;

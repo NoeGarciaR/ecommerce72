@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-12">
+
+    <app-heading></app-heading>
+    <app-breadcrumb></app-breadcrumb>
+
+    <div class="separator mb-5"></div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12 mb-4">
+    <h5 class="mb-4">Proyectos</h5>
+
+    <div class="row icon-cards-row mb-2">
+
+      <div class="col-md-3 col-lg-2 col-sm-4 col-6 mb-4" *ngFor="let item of proyects">
+        <a routerLink="./" class="card">
+          <div class="card-body text-center">
+            <i class="iconsminds-clock"></i>
+            <p class="card-text font-weight-semibold mb-0">{{ 'dashboards.pending-orders' | translate }}</p>
+            <p class="lead text-center">16</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-md-3 col-lg-2 col-sm-4 col-6 mb-4">
+        <a routerLink="./" class="card">
+          <div class="card-body text-center">
+            <i class="iconsminds-add"></i>
+            <p class="lead text-center">Agregar</p>
+            <p class="card-text font-weight-semibold mb-0">un nuevo Proyecto</p>
+          </div>
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+</div>
