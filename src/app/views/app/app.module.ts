@@ -10,7 +10,7 @@ import { ProyectsComponent } from './proyects/proyects.component';
 import { AddProyectComponent } from './add-proyect/add-proyect.component';
 import {ArchwizardModule} from "angular-archwizard";
 import {NgSelectModule} from "@ng-select/ng-select";
-import { FormsModule as FormsModuleAngular } from '@angular/forms';
+import {FormsModule, FormsModule as FormsModuleAngular} from '@angular/forms';
 
 
 @NgModule({
@@ -22,7 +22,8 @@ import { FormsModule as FormsModuleAngular } from '@angular/forms';
     LayoutContainersModule,
     ArchwizardModule,
     NgSelectModule,
-    FormsModuleAngular
+    FormsModuleAngular,
+    FormsModule
   ]
 })
 export class AppModule { }
