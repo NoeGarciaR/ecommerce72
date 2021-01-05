@@ -41,13 +41,16 @@
       </aw-wizard-step>
 
       <aw-wizard-step stepTitle="Step 2" style="min-height: 120px;">
+        <ng-template awWizardStepSymbol><i class="simple-icon-basket-loaded"></i></ng-template>
         <form #formStep2="ngForm" novalidate>
+          <!--
           <div class="form-group tooltip-left-bottom">
             <label>{{ 'forms.email' | translate }}</label>
             <input type="text" class="form-control" name="email" ngModel required #email="ngModel" email>
             <div *ngIf="email?.errors?.required && formStep2.submitted" class="invalid-tooltip">Email is required!</div>
             <div *ngIf="email?.errors?.email && formStep2.submitted" class="invalid-tooltip">Email must be a valid address!</div>
           </div>
+          -->
           <app-list-products></app-list-products>
         </form>
         <div class="text-center">

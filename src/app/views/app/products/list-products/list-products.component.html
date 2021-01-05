@@ -1,99 +1,118 @@
-<app-list-page-header
-  [showOrderBy]="false" [showDisplayMode]="false" (searchKeyUp)="updateFilter($event)" [itemsPerPage]="itemsPerPage" [showItemsPerPage]="false">
+<app-list-page-header [displayMode]="displayMode" [itemOptionsPerPage]="[5,10,20]" [itemsPerPage]="itemsPerPage" [selectAllState]="selectAllState"
+                      (changeDisplayMode)="changeDisplayMode($event)"
+                      (addNewItem)="showAddNewModal()"
+                      (selectAllChange)="selectAllChange($event)"
+                      (itemsPerPageChange)="itemsPerPageChange($event)"
+                      (changeOrderBy)="changeOrderBy($event)"
+                      (searchKeyUp)="searchKeyUp($event)"
+>
 </app-list-page-header>
+<app-add-new-product-modal #addNewModalRef></app-add-new-product-modal>
+
+<context-menu #basicMenu>
+  <ng-template contextMenuItem let-item (execute)="onContextMenuClick('copy',$event.item)">
+    <i class="simple-icon-docs mr-1"></i> <span>Copy</span>
+  </ng-template>
+  <ng-template contextMenuItem let-item (execute)="onContextMenuClick('move-to-archive',$event.item)">
+    <i class="simple-icon-drawer mr-1"></i> <span>Move to archive</span>
+  </ng-template>
+  <ng-template contextMenuItem let-item (execute)="onContextMenuClick('delete',$event.item)">
+    <i class="simple-icon-trash mr-1"></i><span>Delete</span>
+  </ng-template>
+</context-menu>
 
 <div class="row">
-  <div class="col-12 mb-4 data-table-rows data-table-responsive">
-    <ngx-datatable #myTable class="expandable" [columnMode]="ColumnMode.force" [rowHeight]="50" [rows]="rows"
-                   [footerHeight]="100" [limit]="itemsPerPage" [headerHeight]="20" (page)="onPage($event)">
-      <ngx-datatable-row-detail [rowHeight]="95" (toggle)="onDetailToggle($event)" cellClass="datatable-row-detail">
-        <ng-template let-column="column" let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
-          <div class="detail-content">
-            <div class="d-flex flex-row">
-              <div>
-                <div class="text-muted mr-3">
-                  Sales
-                </div>
-                <div class="text-muted mr-3">
-                  Stock
-                </div>
-                <div class="text-muted mr-3">
-                  Category
-                </div>
-                <div class="text-muted mr-3">
-                  Date
+  <div class="col-12 list" *ngIf="displayMode==='list'">
+    <div [ngClass]="{'card d-flex flex-row mb-3': true, 'active':isSelected(p)}" *ngFor="let p of data; let i=index"
+         [contextMenu]="basicMenu" [contextMenuSubject]="p">
+      <div class="d-flex flex-grow-1 min-width-zero">
+        <div
+          class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center">
+          <a class="list-item-heading mb-0 truncate w-40 w-xs-100" href="javascript:;">
+            {{p.title}}
+          </a>
+          <p class="mb-0 text-muted text-small w-15 w-xs-100">{{p.category}}</p>
+          <p class="mb-0 text-muted text-small w-15 w-xs-100">{{p.date}}</p>
+          <div class="w-15 w-xs-100">
+            <span [class]="'badge badge-pill badge-'+ p.statusColor">{{p.status}}</span>
+          </div>
+        </div>
+        <label class="custom-control custom-checkbox mb-1 align-self-center pr-4">
+          <input type="checkbox" class="custom-control-input" [id]="'customCheck'+i" [checked]="isSelected(p)"
+                 (change)="onSelect(p)">
+          <label class="custom-control-label" [for]="'customCheck'+i"></label>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 list" *ngIf="displayMode==='thumb'">
+    <div [ngClass]="{'card d-flex flex-row mb-3': true, 'active':isSelected(p)}" *ngFor="let p of data; let i=index"
+         [contextMenu]="basicMenu" [contextMenuSubject]="p">
+      <a class="d-flex" href="javascript:;">
+        <img [src]="p.img" [alt]="p.title" class="list-thumbnail responsive border-0 card-img-left" />
+      </a>
+      <div class="pl-2 d-flex flex-grow-1 min-width-zero">
+        <div
+          class="card-body align-self-center d-flex flex-column flex-lg-row justify-content-between min-width-zero align-items-lg-center">
+          <a href="javascript:;" class="w-40 w-sm-100">
+            <p class="list-item-heading mb-0 truncate">{{p.title}}</p>
+          </a>
+          <p class="mb-0 text-muted text-small w-15 w-sm-100">{{p.category}}</p>
+          <p class="mb-0 text-muted text-small w-15 w-sm-100">{{p.date}}</p>
+          <div class="w-15 w-sm-100">
+            <span [class]="'badge badge-pill badge-'+ p.statusColor">{{p.status}}</span>
+          </div>
+        </div>
+        <label class="custom-control custom-checkbox mb-1 align-self-center pr-4">
+          <input type="checkbox" class="custom-control-input" [id]="'customCheck'+i" [checked]="isSelected(p)"
+                 (change)="onSelect(p)">
+          <label class="custom-control-label" [for]="'customCheck'+i"></label>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 list" *ngIf="displayMode==='image'">
+    <div class="row">
+      <div class="col-xl-3 col-lg-4 col-12 col-sm-6 mb-4" *ngFor="let p of data; let i=index"
+           [contextMenu]="basicMenu" [contextMenuSubject]="p">
+        <div [ngClass]="{'card': true, 'active':isSelected(p)}">
+          <div class="position-relative">
+            <a href="javascript:;"><img class="card-img-top" [src]="p.img" [alt]="p.title"></a>
+            <span [class]="'badge badge-pill position-absolute badge-top-left badge-'+ p.statusColor">{{p.status}}</span>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-2">
+                <div class="custom-control custom-checkbox pl-1">
+                  <label class="custom-control custom-checkbox  mb-0">
+                    <input type="checkbox" class="custom-control-input" [id]="'customCheck'+i" [checked]="isSelected(p)"
+                           (change)="onSelect(p)">
+                    <label class="custom-control-label" [for]="'customCheck'+i"></label>
+                  </label>
                 </div>
               </div>
-              <div>
-                <div>
-                  {{ row.sales }}
-                </div>
-                <div>
-                  {{ row.stock }}
-                </div>
-                <div>
-                  {{ row.category }}
-                </div>
-                <div>
-                  {{ row.date }}
-                </div>
+              <div class="col-10">
+                <a href="javascript:;">
+                  <p class="list-item-heading mb-4 pt-1">{{p.title}}</p>
+                </a>
+                <footer>
+                  <p class="text-muted text-small mb-0 font-weight-light">{{p.date}}</p>
+                </footer>
               </div>
             </div>
           </div>
-        </ng-template>
-      </ngx-datatable-row-detail>
+        </div>
+      </div>
+    </div>
+  </div>
 
-      <ngx-datatable-column [width]="10" [resizeable]="false" [sortable]="false" [draggable]="false"
-                            [canAutoResize]="false" class="expand-row-button" headerClass="expand-row-button">
-        <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
-          <a [class.datatable-icon-right]="!expanded" [class.datatable-icon-down]="expanded" title="Expand/Collapse Row"
-             (click)="toggleExpandRow(row)" class="d-block d-xl-none c-pointer">
-            <i class="glyph-icon simple-icon-arrow-down"></i>
-          </a>
-        </ng-template>
-      </ngx-datatable-column>
-      <ngx-datatable-column name="Title" [flexGrow]="1.2" [minWidth]="200">
-        <ng-template let-value="value" ngx-datatable-cell-template>
-          <a class="c-pointer">{{ value }}</a>
-        </ng-template>
-      </ngx-datatable-column>
-
-      <ngx-datatable-column name="Sales" [flexGrow]="0.6" headerClass="d-none d-xl-block">
-        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-          <span class="d-none d-xl-block">{{ value }}</span>
-        </ng-template>
-      </ngx-datatable-column>
-
-      <ngx-datatable-column name="Stock" [flexGrow]="0.6" headerClass="d-none d-xl-block">
-        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-          <span class="d-none d-xl-block">{{ value }}</span>
-        </ng-template>
-      </ngx-datatable-column>
-
-      <ngx-datatable-column name="Category" [flexGrow]="1" headerClass="d-none d-xl-block">
-        <ng-template let-value="value" ngx-datatable-cell-template>
-          <span class="d-none d-xl-block">{{ value }}</span>
-        </ng-template>
-      </ngx-datatable-column>
-
-      <ngx-datatable-column name="Date" [flexGrow]="1" headerClass="d-none d-xl-block">
-        <ng-template let-value="value" ngx-datatable-cell-template>
-          <span class="d-none d-xl-block">{{ value }}</span>
-        </ng-template>
-      </ngx-datatable-column>
-
-      <ngx-datatable-footer *ngIf="true">
-        <ng-template ngx-datatable-footer-template let-rowCount="rowCount" let-pageSize="pageSize"
-                     let-selectedCount="selectedCount" let-curPage="curPage" let-offset="offset" let-limit="limit">
-          <div class="w-100 d-flex justify-content-center">
-            <pagination [totalItems]="rowCount" [itemsPerPage]="pageSize" [maxSize]="5" (pageChanged)="table.onFooterPage($event)"
-                        [customNextTemplate]="nextTemplate" [customPreviousTemplate]="prevTemplate">
-            </pagination>
-          </div>
-        </ng-template>
-      </ngx-datatable-footer>
-
-    </ngx-datatable>
+  <div class="col-12">
+    <pagination [totalItems]="totalItem" [itemsPerPage]="itemsPerPage" [rotate]="true" [maxSize]="5"
+                [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" class="justify-content-center"
+                [customNextTemplate]="nextTemplate" [customPreviousTemplate]="prevTemplate">
+    </pagination>
   </div>
 </div>
 
