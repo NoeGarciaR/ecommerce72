@@ -14,6 +14,12 @@ const data: IMenuItem[] = [
     label: 'Proyectos',
     to: '/app/proyects'
   },
+  {
+    id: 'add-proyect',
+    icon: 'simple-icon-share-alt',
+    label: 'Nuevo Proyecto',
+    to: '/app/add-proyect'
+  },
   /*
   {
     id: 'vien',
