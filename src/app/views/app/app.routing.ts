@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { BlankPageComponent } from './blank-page/blank-page.component';
 import {ProyectsComponent} from "./proyects/proyects.component";
 import {AddProyectComponent} from "./add-proyect/add-proyect.component";
+import {ListProductsComponent} from "./products/list-products/list-products.component";
 
 const routes: Routes = [
     {
@@ -15,6 +16,7 @@ const routes: Routes = [
             { path: 'blank-page', component: BlankPageComponent },
             { path: 'proyects', component: ProyectsComponent },
             { path: 'add-proyect', component: AddProyectComponent },
+            { path: 'list', component: ListProductsComponent },
         ]
     }
 ];

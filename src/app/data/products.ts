@@ -13,6 +13,7 @@ const data: IProduct[] = [
     sales: 1647,
     stock: 62
   },
+  /*
   {
     id: 2,
     title: 'Fat Rascal',
@@ -243,6 +244,7 @@ const data: IProduct[] = [
     sales: 524,
     stock: 14
   }
+   */
 ];
 
 export default data;

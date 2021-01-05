@@ -11,10 +11,15 @@ import { AddProyectComponent } from './add-proyect/add-proyect.component';
 import {ArchwizardModule} from "angular-archwizard";
 import {NgSelectModule} from "@ng-select/ng-select";
 import {FormsModule, FormsModule as FormsModuleAngular} from '@angular/forms';
+import {PaginationModule} from "ngx-bootstrap/pagination";
+import {NgxDatatableModule} from "@swimlane/ngx-datatable";
+import {CollapseModule} from "ngx-bootstrap/collapse";
+import {PagesContainersModule} from "../../containers/pages/pages.containers.module";
+import {ListProductsComponent} from "./products/list-products/list-products.component";
 
 
 @NgModule({
-  declarations: [BlankPageComponent, AppComponent, HomeComponent, ProyectsComponent, AddProyectComponent],
+  declarations: [BlankPageComponent, AppComponent, HomeComponent, ProyectsComponent, AddProyectComponent, ListProductsComponent],
   imports: [
     CommonModule,
     AppRoutingModule,
@@ -23,7 +28,14 @@ import {FormsModule, FormsModule as FormsModuleAngular} from '@angular/forms';
     ArchwizardModule,
     NgSelectModule,
     FormsModuleAngular,
-    FormsModule
+    FormsModule,
+    PaginationModule.forRoot(),
+    SharedModule,
+    LayoutContainersModule,
+    NgxDatatableModule,
+    CollapseModule,
+    PagesContainersModule,
+    PaginationModule.forRoot()
   ]
 })
 export class AppModule { }

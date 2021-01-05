@@ -48,6 +48,7 @@
             <div *ngIf="email?.errors?.required && formStep2.submitted" class="invalid-tooltip">Email is required!</div>
             <div *ngIf="email?.errors?.email && formStep2.submitted" class="invalid-tooltip">Email must be a valid address!</div>
           </div>
+          <app-list-products></app-list-products>
         </form>
         <div class="text-center">
           <button type="button" class="btn btn-primary" awPreviousStep>{{ 'wizard.prev' | translate }}</button>{{" "}}
