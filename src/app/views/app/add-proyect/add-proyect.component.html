@@ -62,8 +62,11 @@
       <aw-wizard-step stepTitle="Paga" style="min-height: 120px;">
         <ng-template awWizardStepSymbol><i class="iconsminds-credit-card"></i></ng-template>
         <form #formStep3="ngForm" novalidate>
+
           <div class="form-group tooltip-left-bottom">
             <label>Pago</label>
+            <app-paypal></app-paypal>
+            <!--
             <input type="password" class="form-control" name="password" ngModel required #password="ngModel" minlength="8"
                    pattern="([A-Za-z]+[0-9]|[0-9]+[A-Za-z])[A-Za-z0-9]*">
             <div *ngIf="password?.errors?.required && formStep3.submitted" class="invalid-tooltip">Password is required!
@@ -72,6 +75,7 @@
               least a letter and a number!</div>
             <div *ngIf="!password?.errors?.pattern && password?.errors?.minlength && formStep3.submitted"
                  class="invalid-tooltip">Paswsword must contain at least 8 characters!</div>
+                 -->
           </div>
         </form>
         <div class="text-center">

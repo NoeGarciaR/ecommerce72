@@ -23,9 +23,11 @@ import { LayoutContainersModule } from './containers/layout/layout.containers.mo
     AngularFireModule.initializeApp(environment.firebase)
   ],
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   providers: [],
+  exports: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

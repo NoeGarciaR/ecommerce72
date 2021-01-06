@@ -5,6 +5,7 @@ import { BlankPageComponent } from './blank-page/blank-page.component';
 import {ProyectsComponent} from "./proyects/proyects.component";
 import {AddProyectComponent} from "./add-proyect/add-proyect.component";
 import {ListProductsComponent} from "./products/list-products/list-products.component";
+import {PaypalComponent} from "./paypal/paypal.component";
 
 const routes: Routes = [
     {
@@ -17,6 +18,7 @@ const routes: Routes = [
             { path: 'proyects', component: ProyectsComponent },
             { path: 'add-proyect', component: AddProyectComponent },
             { path: 'list', component: ListProductsComponent },
+            { path: 'paypal', component: PaypalComponent }
         ]
     }
 ];

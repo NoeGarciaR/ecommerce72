@@ -13,10 +13,12 @@ import {NgSelectModule} from "@ng-select/ng-select";
 import {FormsModule, FormsModule as FormsModuleAngular, ReactiveFormsModule} from '@angular/forms';
 import {ListProductsComponent} from "./products/list-products/list-products.component";
 import {ProductsModule} from "./products/products.module";
+import {DashboardsContainersModule} from "../../containers/dashboards/dashboards.containers.module";
+import { PaypalComponent } from './paypal/paypal.component';
 
 
 @NgModule({
-  declarations: [BlankPageComponent, AppComponent, HomeComponent, ProyectsComponent, AddProyectComponent, ListProductsComponent],
+  declarations: [BlankPageComponent, AppComponent, HomeComponent, ProyectsComponent, AddProyectComponent, ListProductsComponent, PaypalComponent],
   imports: [
     CommonModule,
     AppRoutingModule,
@@ -27,7 +29,8 @@ import {ProductsModule} from "./products/products.module";
     FormsModuleAngular,
     ReactiveFormsModule,
     FormsModule,
-    ProductsModule
+    ProductsModule,
+    DashboardsContainersModule,
   ]
 })
 export class AppModule { }
