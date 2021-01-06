@@ -10,6 +10,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { LayoutContainersModule } from './containers/layout/layout.containers.module';
+import {AngularFirestoreModule} from "@angular/fire/firestore";
+import {AngularFireAuthModule} from "@angular/fire/auth";
+import {AngularFireStorageModule} from "@angular/fire/storage";
 
 @NgModule({
   imports: [
@@ -20,7 +23,10 @@ import { LayoutContainersModule } from './containers/layout/layout.containers.mo
     BrowserAnimationsModule,
     TranslateModule.forRoot(),
     HttpClientModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
+    AngularFireStorageModule // imports firebase/storage only needed for storage features
   ],
   declarations: [
     AppComponent,

@@ -2,7 +2,7 @@ export interface ProyectModel {
   id?: string;
   date: number;
   fin: boolean;
-  name: string;
+  nameShop: string;
   url?: string;
   color: string;
   desing: string;

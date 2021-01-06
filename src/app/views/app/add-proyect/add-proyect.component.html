@@ -9,7 +9,7 @@
         <form #formStep1="ngForm" novalidate class="row">
           <div class="form-group tooltip-left-bottom col-12">
             <label>Nombre de la tienda</label>
-            <input type="text" class="form-control" name="tienda" ngModel required #tienda="ngModel" >
+            <input type="text" class="form-control" name="tienda" ngModel required #tienda="ngModel" [(ngModel)]="nameShop">
             <div *ngIf="!tienda.valid && formStep1.submitted" class="invalid-tooltip">El nombre es requerido</div>
           </div>
 

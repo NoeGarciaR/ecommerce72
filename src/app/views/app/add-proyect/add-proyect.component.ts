@@ -2,6 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormControl, NgForm} from "@angular/forms";
 import { WizardComponent as ArcWizardComponent } from 'angular-archwizard';
 import {Observable} from "rxjs";
+import {ProyectsService} from "../../../core/services/proyects.service";
+import {ProyectModel} from "../../../core/models/proyect-model";
 
 @Component({
   selector: 'app-add-proyect',
@@ -17,6 +19,7 @@ export class AddProyectComponent implements OnInit {
 
   selectedDesign: number;
   selectedColor: number;
+  nameShop: string = 'Tienda 1';
 
   public designs = [
     { id: 0, nombre: 'Exprés', url: 'https://e-commerce72.com/wp-content/uploads/2020/06/tienda-online-1-241x300.jpg' },
@@ -36,7 +39,10 @@ export class AddProyectComponent implements OnInit {
   ];
 
   posting = false;
-  constructor() {
+
+  private proyect: ProyectModel;
+
+  constructor( private _ps: ProyectsService) {
   }
 
   ngOnInit() {
@@ -47,6 +53,8 @@ export class AddProyectComponent implements OnInit {
   onNextStep1() {
     this.formStep1.onSubmit(null);
     if (this.formStep1.valid) {
+      this.addProyect();
+      console.log(this.proyect);
       this.wizard.goToNextStep();
     }
   }
@@ -71,5 +79,27 @@ export class AddProyectComponent implements OnInit {
 
   seleccionar(i: number) {
     console.log(i);
+  }
+
+  /* Agregando datos en firebase */
+  public addProyect() {
+    const _date = new Date().getTime();
+    const _proyect: ProyectModel = {
+      color: this.colors[this.selectedColor].nombre,
+      desing: this.designs[this.selectedDesign].nombre,
+      date: _date,
+      fin: false,
+      nameShop: this.nameShop,
+      steep: 2
+    };
+    this.proyect = _proyect;
+    this._ps.createProyect(_proyect)
+      .then( (res ) => {
+        this.proyect.id = res.id;
+      })
+      .catch( error => {
+        console.log(error);
+        this.proyect = null;
+      });
   }
 }

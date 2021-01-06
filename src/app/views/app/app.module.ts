@@ -15,6 +15,7 @@ import {ListProductsComponent} from "./products/list-products/list-products.comp
 import {ProductsModule} from "./products/products.module";
 import {DashboardsContainersModule} from "../../containers/dashboards/dashboards.containers.module";
 import { PaypalComponent } from './paypal/paypal.component';
+import {ProyectsService} from "../../core/services/proyects.service";
 
 
 @NgModule({
