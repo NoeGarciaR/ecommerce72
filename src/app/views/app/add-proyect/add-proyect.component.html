@@ -14,7 +14,7 @@
           </div>
 
           <div class="col-12 col-lg-6 mb-4">
-            <label><span>Selecciona un diseño</span></label>
+            <label><span>Selecciona el diseño de tu tienda</span></label>
             <ng-select appearance="outline" [searchable]="true" [(ngModel)]="selectedDesign" [ngModelOptions]="{standalone: true}">
               <ng-option *ngFor="let item of designs" [value]="item.id">{{ item.nombre }}</ng-option>
             </ng-select>
@@ -24,7 +24,7 @@
           </div>
 
           <div class="col-12 col-lg-6 mb-4">
-            <label><span>Selecciona los colores de ti tienda</span></label>
+            <label><span>Selecciona los colores para tu tienda</span></label>
             <ng-select appearance="outline" [searchable]="true" [(ngModel)]="selectedColor" [ngModelOptions]="{standalone: true}">>
               <ng-option *ngFor="let item of colors" [value]="item.id">{{ item.nombre }}</ng-option>
             </ng-select>

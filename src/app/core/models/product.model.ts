@@ -13,4 +13,5 @@ export interface ProductModel {
   color?: string;
   proyecto?: string;
   urlDescatacada?: string;
+  urlImgs?: string[];
 }

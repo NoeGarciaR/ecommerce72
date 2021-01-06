@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
 
     this.authService.signIn(this.loginForm.value).subscribe((user) => {
       this.router.navigate(['/']);
+      localStorage.setItem('_uid', user.user.uid);
     }, (error) => {
       this.buttonDisabled = false;
       this.buttonState = '';
