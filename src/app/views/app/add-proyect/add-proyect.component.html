@@ -4,10 +4,38 @@
     <aw-wizard #wizard [navBarLayout]="'large-empty-symbols'">
 
       <!-- Inicio del primer slide -->
+
+      <aw-wizard-step stepTitle="Paga" style="min-height: 120px;">
+        <ng-template awWizardStepSymbol><i class="iconsminds-credit-card"></i></ng-template>
+
+        <form #formStep1="ngForm" novalidate>
+          <div class="row equal-height-container mb-5">
+            <div class="col-md-12 col-lg-4 col-item mb-4" *ngFor="let option of saleOptions">
+              <app-price-card [price]="option"></app-price-card>
+            </div>
+          </div>
+          <!--<div class="row col-12 mt-3 text-center">
+            <app-paypal class="col-lg-4" *ngFor="let option of saleOptions" [saleOption]="option"></app-paypal>
+          </div>
+          -->
+          <!--<div class="row col-12">
+            <div class="col-md-12 col-lg-6 col-item mb-4">
+              <app-paypal class="mr-lg-5" *ngFor="let option of saleOptions" [saleOption]="option"></app-paypal>
+            </div>
+          </div>
+          -->
+        </form>
+
+        <div class="text-center">
+          <button type="button" class="btn btn-primary" awPreviousStep disabled>{{ 'wizard.prev' | translate }}</button>{{" "}}
+          <button type="button" class="btn btn-primary" (click)="onNextStep1()">{{ 'wizard.next' | translate }}</button>
+        </div>
+      </aw-wizard-step>
+
       <aw-wizard-step stepTitle="Personaliza" style="min-height: 120px;">
         <ng-template awWizardStepSymbol><i class="iconsminds-shop-2"></i></ng-template>
 
-        <form #formStep1="ngForm" novalidate class="row">
+        <form #formStep2="ngForm" novalidate class="row">
           <div class="form-group tooltip-left-bottom col-12">
             <label>Nombre de la tienda</label>
             <input type="text" class="form-control" name="tienda" ngModel required #tienda="ngModel" [(ngModel)]="nameShop">
@@ -37,15 +65,15 @@
         </form>
 
         <div class="text-center">
-          <button type="button" class="btn btn-primary" awPreviousStep disabled>{{ 'wizard.prev' | translate }}</button>{{" "}}
-          <button type="button" class="btn btn-primary" (click)="onNextStep1()">{{ 'wizard.next' | translate }}</button>
+          <button type="button" class="btn btn-primary" awPreviousStep >{{ 'wizard.prev' | translate }}</button>{{" "}}
+          <button type="button" class="btn btn-primary" (click)="onNextStep2()">{{ 'wizard.next' | translate }}</button>
         </div>
       </aw-wizard-step>
 
       <aw-wizard-step stepTitle="Agrega" style="min-height: 120px;">
         <ng-template awWizardStepSymbol><i class="simple-icon-basket-loaded"></i></ng-template>
 
-        <form #formStep2="ngForm" novalidate>
+        <form #formStep3="ngForm" novalidate>
           <!--
           <div class="form-group tooltip-left-bottom">
             <label>{{ 'forms.email' | translate }}</label>
@@ -59,36 +87,10 @@
 
         <div class="text-center">
           <button type="button" class="btn btn-primary" awPreviousStep>{{ 'wizard.prev' | translate }}</button>{{" "}}
-          <button type="button" class="btn btn-primary" (click)="onNextStep2()">{{ 'wizard.next' | translate }}</button>
-        </div>
-      </aw-wizard-step>
-
-      <aw-wizard-step stepTitle="Paga" style="min-height: 120px;">
-        <ng-template awWizardStepSymbol><i class="iconsminds-credit-card"></i></ng-template>
-
-        <form #formStep3="ngForm" novalidate>
-
-          <div class="form-group tooltip-left-bottom">
-            <label>Pago</label>
-            <app-paypal *ngFor="let option of saleOptions" [saleOption]="option"></app-paypal>
-            <!--
-            <input type="password" class="form-control" name="password" ngModel required #password="ngModel" minlength="8"
-                   pattern="([A-Za-z]+[0-9]|[0-9]+[A-Za-z])[A-Za-z0-9]*">
-            <div *ngIf="password?.errors?.required && formStep3.submitted" class="invalid-tooltip">Password is required!
-            </div>
-            <div *ngIf="password?.errors?.pattern && formStep3.submitted" class="invalid-tooltip">Paswsword must contain at
-              least a letter and a number!</div>
-            <div *ngIf="!password?.errors?.pattern && password?.errors?.minlength && formStep3.submitted"
-                 class="invalid-tooltip">Paswsword must contain at least 8 characters!</div>
-                 -->
-          </div>
-        </form>
-
-        <div class="text-center">
-          <button type="button" class="btn btn-primary" awPreviousStep>{{ 'wizard.prev' | translate }}</button>{{" "}}
           <button type="button" class="btn btn-primary" (click)="onNextStep3()">{{ 'wizard.next' | translate }}</button>
         </div>
       </aw-wizard-step>
+
 
       <aw-wizard-completion-step stepTitle="Hecho" style="min-height: 120px;">
         <ng-template awWizardStepSymbol><i class="simple-icon-check"></i></ng-template>

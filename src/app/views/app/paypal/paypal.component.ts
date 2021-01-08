@@ -8,14 +8,9 @@ declare var paypal;
   styleUrls: ['./paypal.component.scss']
 })
 export class PaypalComponent implements OnInit {
+  locale = '';
   @ViewChild('paypal', { static: true }) paypalElement: ElementRef;
-  @Input() saleOption: SaleOptionModel;
-
-  producto = {
-    descripcion : 'producto en venta',
-    precio      : 150,
-    img         : 'https://brooksbrothers.vteximg.com.br/arquivos/ids/188129-1024-1243/100077337-1.jpg?v=637401850262230000'
-  };
+  @Input() saleOption: any;
 
   title = 'angular-paypal-payment';
 

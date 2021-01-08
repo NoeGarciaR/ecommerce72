@@ -58,8 +58,6 @@ export class AddProyectComponent implements OnInit {
   onNextStep1() {
     this.formStep1.onSubmit(null);
     if (this.formStep1.valid) {
-      this.addProyect();
-      console.log(this.proyect);
       this.wizard.goToNextStep();
     }
   }
@@ -67,6 +65,8 @@ export class AddProyectComponent implements OnInit {
   onNextStep2() {
     this.formStep2.onSubmit(null);
     if (this.formStep2.valid) {
+      this.addProyect();
+      console.log(this.proyect);
       this.wizard.goToNextStep();
     }
   }

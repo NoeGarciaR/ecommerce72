@@ -16,23 +16,25 @@ import {ProductsModule} from "./products/products.module";
 import {DashboardsContainersModule} from "../../containers/dashboards/dashboards.containers.module";
 import { PaypalComponent } from './paypal/paypal.component';
 import {ProyectsService} from "../../core/services/proyects.service";
+import {ComponentsCardsModule} from "../../components/cards/components.cards.module";
 
 
 @NgModule({
   declarations: [BlankPageComponent, AppComponent, HomeComponent, ProyectsComponent, AddProyectComponent, ListProductsComponent, PaypalComponent],
-  imports: [
-    CommonModule,
-    AppRoutingModule,
-    SharedModule,
-    LayoutContainersModule,
-    ArchwizardModule,
-    NgSelectModule,
-    FormsModuleAngular,
-    ReactiveFormsModule,
-    FormsModule,
-    ProductsModule,
-    DashboardsContainersModule,
-  ]
+    imports: [
+        CommonModule,
+        AppRoutingModule,
+        SharedModule,
+        LayoutContainersModule,
+        ArchwizardModule,
+        NgSelectModule,
+        FormsModuleAngular,
+        ReactiveFormsModule,
+        FormsModule,
+        ProductsModule,
+        DashboardsContainersModule,
+        ComponentsCardsModule,
+    ]
 })
 export class AppModule { }
 
