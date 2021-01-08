@@ -1,4 +1,5 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {SaleOptionModel} from "../../../core/models/sale-option.model";
 declare var paypal;
 
 @Component({
@@ -7,7 +8,8 @@ declare var paypal;
   styleUrls: ['./paypal.component.scss']
 })
 export class PaypalComponent implements OnInit {
-  @ViewChild('paypal', { static: true }) paypalElement : ElementRef;
+  @ViewChild('paypal', { static: true }) paypalElement: ElementRef;
+  @Input() saleOption: SaleOptionModel;
 
   producto = {
     descripcion : 'producto en venta',
@@ -24,10 +26,10 @@ export class PaypalComponent implements OnInit {
           return actions.order.create({
             purchase_units: [
               {
-                description: this.producto.descripcion,
+                description: this.saleOption.title,
                 amount     : {
                   currency_code: 'MXN',
-                  value        : this.producto.precio
+                  value        : this.saleOption.price
                 }
               }
             ]
@@ -45,5 +47,4 @@ export class PaypalComponent implements OnInit {
       })
       .render( this.paypalElement.nativeElement );
   }
-
 }

@@ -6,6 +6,7 @@
       <!-- Inicio del primer slide -->
       <aw-wizard-step stepTitle="Personaliza" style="min-height: 120px;">
         <ng-template awWizardStepSymbol><i class="iconsminds-shop-2"></i></ng-template>
+
         <form #formStep1="ngForm" novalidate class="row">
           <div class="form-group tooltip-left-bottom col-12">
             <label>Nombre de la tienda</label>
@@ -34,6 +35,7 @@
           </div>
 
         </form>
+
         <div class="text-center">
           <button type="button" class="btn btn-primary" awPreviousStep disabled>{{ 'wizard.prev' | translate }}</button>{{" "}}
           <button type="button" class="btn btn-primary" (click)="onNextStep1()">{{ 'wizard.next' | translate }}</button>
@@ -42,6 +44,7 @@
 
       <aw-wizard-step stepTitle="Agrega" style="min-height: 120px;">
         <ng-template awWizardStepSymbol><i class="simple-icon-basket-loaded"></i></ng-template>
+
         <form #formStep2="ngForm" novalidate>
           <!--
           <div class="form-group tooltip-left-bottom">
@@ -53,6 +56,7 @@
           -->
           <app-list-products></app-list-products>
         </form>
+
         <div class="text-center">
           <button type="button" class="btn btn-primary" awPreviousStep>{{ 'wizard.prev' | translate }}</button>{{" "}}
           <button type="button" class="btn btn-primary" (click)="onNextStep2()">{{ 'wizard.next' | translate }}</button>
@@ -61,11 +65,12 @@
 
       <aw-wizard-step stepTitle="Paga" style="min-height: 120px;">
         <ng-template awWizardStepSymbol><i class="iconsminds-credit-card"></i></ng-template>
+
         <form #formStep3="ngForm" novalidate>
 
           <div class="form-group tooltip-left-bottom">
             <label>Pago</label>
-            <app-paypal></app-paypal>
+            <app-paypal *ngFor="let option of saleOptions" [saleOption]="option"></app-paypal>
             <!--
             <input type="password" class="form-control" name="password" ngModel required #password="ngModel" minlength="8"
                    pattern="([A-Za-z]+[0-9]|[0-9]+[A-Za-z])[A-Za-z0-9]*">
@@ -78,6 +83,7 @@
                  -->
           </div>
         </form>
+
         <div class="text-center">
           <button type="button" class="btn btn-primary" awPreviousStep>{{ 'wizard.prev' | translate }}</button>{{" "}}
           <button type="button" class="btn btn-primary" (click)="onNextStep3()">{{ 'wizard.next' | translate }}</button>
@@ -86,6 +92,7 @@
 
       <aw-wizard-completion-step stepTitle="Hecho" style="min-height: 120px;">
         <ng-template awWizardStepSymbol><i class="simple-icon-check"></i></ng-template>
+
         <div class="text-center complete-message-centered">
           <div *ngIf="posting">
             <div class="spinner-border text-primary" role="status">
@@ -97,6 +104,7 @@
             <p>{{ 'wizard.registered' | translate }}</p>
           </div>
         </div>
+
       </aw-wizard-completion-step>
 
     </aw-wizard>

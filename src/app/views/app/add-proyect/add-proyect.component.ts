@@ -1,9 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormControl, NgForm} from "@angular/forms";
 import { WizardComponent as ArcWizardComponent } from 'angular-archwizard';
-import {Observable} from "rxjs";
 import {ProyectsService} from "../../../core/services/proyects.service";
 import {ProyectModel} from "../../../core/models/proyect-model";
+import {SaleOptionsService} from "../../../core/services/sale-options.service";
+import {SaleOptionModel} from "../../../core/models/sale-option.model";
 
 @Component({
   selector: 'app-add-proyect',
@@ -33,23 +34,27 @@ export class AddProyectComponent implements OnInit {
   public colors = [
     { id: 0, nombre: 'Técnológico', url: 'https://e-commerce72.com/wp-content/uploads/2020/06/Paleta-de-color_TECNOLOGICO.jpg' },
     { id: 1, nombre: 'Fashion', url: 'https://e-commerce72.com/wp-content/uploads/2020/06/Paleta-de-color_FASHION.jpg' },
-    { id: 2, nombre: 'Dinámico', url: 'https://e-commerce72.com/wp-content/uploads/2020/06/Paleta-de-color_DINAMICO.jpg' },
+    { id: 2, nombre: 'Dinápmico', url: 'https://e-commerce72.com/wp-content/uploads/2020/06/Paleta-de-color_DINAMICO.jpg' },
     { id: 3, nombre: 'Formal', url: 'https://e-commerce72.com/wp-content/uploads/2020/06/Paleta-de-color_FORMAL.jpg' },
     { id: 4, nombre: 'Natural', url: 'https://e-commerce72.com/wp-content/uploads/2020/06/Paleta-de-color_NATURAL.jpg' },
   ];
 
   posting = false;
 
+  public saleOptions: SaleOptionModel[] = [];
+
   private proyect: ProyectModel;
 
-  constructor( private _ps: ProyectsService) {
+  constructor( private _ps: ProyectsService, private _sos: SaleOptionsService ) {
   }
 
   ngOnInit() {
     this.selectedDesign = 0;
     this.selectedColor = 0;
+    this.getSaleOptions();
   }
 
+  /*INICIO DE LOS FIRMULARIO DE STEPPERS*/
   onNextStep1() {
     this.formStep1.onSubmit(null);
     if (this.formStep1.valid) {
@@ -76,12 +81,12 @@ export class AddProyectComponent implements OnInit {
       this.wizard.goToNextStep();
     }
   }
-
+  /* FIN DE LOS FORMULARIO DE STEEPERS */
   seleccionar(i: number) {
     console.log(i);
   }
 
-  /* Agregando datos en firebase */
+  /* Agregando datos de proyects en firebase */
   public addProyect() {
     const _date = new Date().getTime();
     const _proyect: ProyectModel = {
@@ -96,10 +101,19 @@ export class AddProyectComponent implements OnInit {
     this._ps.createProyect(_proyect)
       .then( (res ) => {
         this.proyect.id = res.id;
+        this.proyect.uid = localStorage.getItem('_uid');
+        localStorage.setItem('_proyect_act', JSON.stringify(this.proyect));
       })
       .catch( error => {
         console.log(error);
         this.proyect = null;
       });
+  }
+
+  /* Métodos de sale obtions */
+  public getSaleOptions() {
+    this._sos.getSaleOptions().subscribe( saleOptions => {
+      this.saleOptions = saleOptions;
+    });
   }
 }
