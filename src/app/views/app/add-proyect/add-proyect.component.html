@@ -38,11 +38,11 @@
       <aw-wizard-step stepTitle="Personaliza" style="min-height: 120px;">
         <ng-template awWizardStepSymbol><i class="iconsminds-shop-2"></i></ng-template>
 
-        <form #formStep2="ngForm" novalidate class="row">
+        <form #formStep2="ngForm" class="row">
           <div class="form-group tooltip-left-bottom col-12">
             <label>Nombre de la tienda</label>
             <input type="text" class="form-control" name="tienda" ngModel required #tienda="ngModel" [(ngModel)]="nameShop">
-            <div *ngIf="!tienda.valid && formStep1.submitted" class="invalid-tooltip">El nombre es requerido</div>
+            <div *ngIf="!tienda.valid && formStep2.submitted" class="invalid-tooltip">El nombre es requerido</div>
           </div>
 
           <div class="col-12 col-lg-6 mb-4">

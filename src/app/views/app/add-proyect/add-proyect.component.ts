@@ -79,9 +79,14 @@ export class AddProyectComponent implements OnInit {
   onNextStep2() {
     this.formStep2.onSubmit(null);
     if (this.formStep2.valid) {
-      //this.addProyect();
-      console.log(this.proyect);
-      this.wizard.goToNextStep();
+      this.proyect.desing = this.designs[this.selectedDesign].nombre;
+      this.proyect.nameShop = this.nameShop;
+      this.proyect.color = this.colors[this.selectedColor].nombre;
+      this.proyect.steep = 3;
+      this._ps.updateProyect(this.proyect).then( (res) => {
+        console.log(res);
+        this.wizard.goToNextStep();
+      });
     }
   }
 
