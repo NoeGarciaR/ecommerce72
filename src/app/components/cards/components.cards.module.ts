@@ -22,7 +22,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     RoundProgressModule,
     SharedModule
   ],
-  providers: [],
+  providers: [ ],
   exports: [
     GradientCardComponent,
     GradientWithRadialProgressCardComponent,

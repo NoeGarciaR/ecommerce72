@@ -1,5 +1,6 @@
-import {Component, OnInit, Input, ViewChild, ElementRef} from '@angular/core';
+import {Component, OnInit, Input, ViewChild, ElementRef, Output, EventEmitter} from '@angular/core';
 import { IPriceItem } from 'src/app/data/prices';
+import {NotificationsService} from "angular2-notifications";
 declare var paypal;
 
 @Component({
@@ -9,11 +10,16 @@ declare var paypal;
 export class PriceCardComponent implements OnInit {
   @ViewChild('paypal', { static: true }) paypalElement: ElementRef;
   @Input() price: IPriceItem;
+  /*Comunicacion con el elemento padre*/
+  @Output() response: EventEmitter<any> = new EventEmitter<any>();
+  @Output() isProcess: EventEmitter<number> = new EventEmitter<number>(); //Si se esta procesando el pago
 
-  constructor() { }
+
+  constructor( ) { }
   title = 'angular-paypal-payment';
 
   ngOnInit() {
+    this.isProcess.emit(0);
     paypal
       .Buttons({
         createOrder: (data, actions) => {
@@ -30,13 +36,16 @@ export class PriceCardComponent implements OnInit {
           })
         },
         onApprove: async (data, actions) => {
+          this.isProcess.emit(1);
           const order = await actions.order.capture();
-          console.log(order);
-
+          await this.response.emit(order);
+          await this.isProcess.emit(2);
+          //console.log(order);
         },
         onError: err => {
           console.log(err);
-
+          this.response.emit(3);
+          /*this.response.emit(err);*/
         }
       })
       .render( this.paypalElement.nativeElement );
