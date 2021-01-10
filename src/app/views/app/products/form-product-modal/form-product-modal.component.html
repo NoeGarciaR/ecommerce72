@@ -1,0 +1,103 @@
+<button type="button" class="btn btn-primary" (click)="openModal(template)">Agregar Producto</button>
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Formulario Producto</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+
+    <form>
+
+      <div class="form-group">
+        <label for="inputNombre">Nombre</label>
+        <input type="text" class="form-control" id="inputNombre" placeholder="Nombre del producto">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="inputSku">SKU</label>
+          <input type="text" class="form-control" id="inputSku" placeholder="SKU">
+        </div>
+
+        <div class="form-group col-md-4">
+          <label for="inputColor">Color</label>
+          <input type="text" class="form-control" id="inputColor" placeholder="Color">
+        </div>
+
+        <div class="form-group col-md-4">
+
+          <label for="inputPrecio">Percio</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">$</span>
+            </div>
+            <input type="number" class="form-control" id="inputPrecio" placeholder="">
+          </div>
+
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputCategoria">Categoria</label>
+          <input type="text" class="form-control" id="inputCategoria" placeholder="Categoria">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputSubCategoria">Sub Categoria</label>
+          <input type="text" class="form-control" id="inputSubCategoria" placeholder="Sub Categoria">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputDescripcion">Descripción</label>
+          <textarea class="form-control" id="inputDescripcion" placeholder="Descripción" rows="2"></textarea>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputFichaTecnica">Ficha técnica</label>
+          <textarea class="form-control" id="inputFichaTecnica" placeholder="Ficha técnica" rows="2"></textarea>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="inputAlto">Alto</label>
+          <div class="input-group">
+            <input type="number" class="form-control" id="inputAlto" placeholder="">
+            <div class="input-group-prepend">
+              <span class="input-group-text">cm</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group col-md-4">
+          <label for="inputAncho">Ancho</label>
+          <div class="input-group">
+            <input type="number" class="form-control" id="inputAncho" placeholder="">
+            <div class="input-group-prepend">
+              <span class="input-group-text">cm</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group col-md-4">
+          <label for="inputPeso">Peso</label>
+          <div class="input-group">
+            <input type="number" class="form-control" id="inputPeso" placeholder="">
+            <div class="input-group-prepend">
+              <span class="input-group-text">gramos</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary d-block mt-3">Guardar</button>
+
+      <button type="button" class="btn btn-primary" popover="Vivamus sagittis">Boton ok</button> {{" "}}
+      <button type="button" class="btn btn-primary" tooltip="Vivamus sagittis">boton no ok</button>
+    </form>
+  </div>
+</ng-template>
