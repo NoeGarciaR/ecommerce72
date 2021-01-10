@@ -18,7 +18,8 @@ const routes: Routes = [
             { path: 'proyects', component: ProyectsComponent },
             { path: 'add-proyect', component: AddProyectComponent },
             { path: 'list', component: ListProductsComponent },
-            { path: 'paypal', component: PaypalComponent }
+            { path: 'paypal', component: PaypalComponent },
+            { path: 'product', component: ListProductsComponent },
         ]
     }
 ];

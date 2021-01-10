@@ -8,10 +8,6 @@ export class ProductsService {
 
   products: ProductModel[] = [
     { nombre: 'Producto 1', precio: 34.55, id: 'idProducto1', sku: 'SKUPRODUCT1', subCategoria: 'MODA', descripcion: 'PRODUCTO DE MODA 1', categoria: 'PANTALON' },
-    { nombre: 'Producto 1', precio: 34.55, id: 'idProducto1', sku: 'SKUPRODUCT1', subCategoria: 'MODA', descripcion: 'PRODUCTO DE MODA 1', categoria: 'PANTALON' },
-    { nombre: 'Producto 1', precio: 34.55, id: 'idProducto1', sku: 'SKUPRODUCT1', subCategoria: 'MODA', descripcion: 'PRODUCTO DE MODA 1', categoria: 'PANTALON' },
-    { nombre: 'Producto 1', precio: 34.55, id: 'idProducto1', sku: 'SKUPRODUCT1', subCategoria: 'MODA', descripcion: 'PRODUCTO DE MODA 1', categoria: 'PANTALON' },
-    { nombre: 'Producto 1', precio: 34.55, id: 'idProducto1', sku: 'SKUPRODUCT1', subCategoria: 'MODA', descripcion: 'PRODUCTO DE MODA 1', categoria: 'PANTALON' },
   ];
 
   constructor() { }
