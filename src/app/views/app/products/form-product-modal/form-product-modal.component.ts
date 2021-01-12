@@ -1,4 +1,4 @@
-import {Component, OnInit, TemplateRef} from '@angular/core';
+import {Component, Input, OnInit, TemplateRef} from '@angular/core';
 import {BsModalRef, BsModalService} from "ngx-bootstrap/modal";
 
 @Component({
@@ -7,6 +7,8 @@ import {BsModalRef, BsModalService} from "ngx-bootstrap/modal";
   styleUrls: ['./form-product-modal.component.scss']
 })
 export class FormProductModalComponent implements OnInit {
+  @Input() buttonText: string = 'Boton';
+  @Input() buttonIcon: string = 'iconsminds-folder-add--';
   modalRef: BsModalRef;
   constructor(private modalService: BsModalService) { }
 
@@ -15,7 +17,7 @@ export class FormProductModalComponent implements OnInit {
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(
       template,
-      Object.assign({}, { class: 'modal-lg' })
+      Object.assign({}, { class: 'modal-xl' })
     );
   }
 }

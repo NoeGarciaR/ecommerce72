@@ -12,29 +12,30 @@ import {ArchwizardModule} from "angular-archwizard";
 import {NgSelectModule} from "@ng-select/ng-select";
 import {FormsModule, FormsModule as FormsModuleAngular, ReactiveFormsModule} from '@angular/forms';
 import {ListProductsComponent} from "./products/list-products/list-products.component";
-import {ProductsModule} from "./products/products.module";
 import {DashboardsContainersModule} from "../../containers/dashboards/dashboards.containers.module";
 import { PaypalComponent } from './paypal/paypal.component';
-import {ProyectsService} from "../../core/services/proyects.service";
 import {ComponentsCardsModule} from "../../components/cards/components.cards.module";
+import {ProductsModule} from "./products/products.module";
 
 
 @NgModule({
   declarations: [BlankPageComponent, AppComponent, HomeComponent, ProyectsComponent, AddProyectComponent, ListProductsComponent, PaypalComponent],
-    imports: [
-        CommonModule,
-        AppRoutingModule,
-        SharedModule,
-        LayoutContainersModule,
-        ArchwizardModule,
-        NgSelectModule,
-        FormsModuleAngular,
-        ReactiveFormsModule,
-        FormsModule,
-        ProductsModule,
-        DashboardsContainersModule,
-        ComponentsCardsModule,
-    ]
+  exports: [
+  ],
+  imports: [
+    CommonModule,
+    AppRoutingModule,
+    SharedModule,
+    LayoutContainersModule,
+    ArchwizardModule,
+    NgSelectModule,
+    FormsModuleAngular,
+    ReactiveFormsModule,
+    FormsModule,
+    DashboardsContainersModule,
+    ComponentsCardsModule,
+    ProductsModule
+  ]
 })
 export class AppModule { }
 

@@ -1,4 +1,7 @@
-<button type="button" class="btn btn-primary" (click)="openModal(template)">Agregar Producto</button>
+<button type="button" class="btn btn-primary" (click)="openModal(template)">
+  <i [class]="buttonIcon"></i>
+  {{ buttonText }}
+</button>
 <ng-template #template>
   <div class="modal-header">
     <h4 class="modal-title pull-left">Formulario Producto</h4>
@@ -94,10 +97,13 @@
         </div>
       </div>
 
-      <button type="submit" class="btn btn-primary d-block mt-3">Guardar</button>
+      <app-drop-zone-img-product></app-drop-zone-img-product>
 
+      <button type="submit" class="btn btn-primary d-block mt-3">Guardar</button>
+      <!--
       <button type="button" class="btn btn-primary" popover="Vivamus sagittis">Boton ok</button> {{" "}}
       <button type="button" class="btn btn-primary" tooltip="Vivamus sagittis">boton no ok</button>
+      -->
     </form>
   </div>
 </ng-template>
