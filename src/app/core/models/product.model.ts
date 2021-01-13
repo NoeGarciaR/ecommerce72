@@ -11,7 +11,7 @@ export interface ProductModel {
   ancho?: number;
   peso?: number;
   color?: string;
-  proyecto?: string;
-  urlDescatacada?: string;
-  urlImgs?: string[];
+  proyect_id?: string; /* ID del proyecto */
+  //urlDescatacada?: string;
+  //urlImgs?: string[];
 }

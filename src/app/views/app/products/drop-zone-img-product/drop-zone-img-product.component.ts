@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-drop-zone-img-product',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./drop-zone-img-product.component.scss']
 })
 export class DropZoneImgProductComponent implements OnInit {
+  @Output() event: EventEmitter<File[]> = new EventEmitter<File[]>();
 
   files: File[] = [];
 
@@ -16,11 +17,17 @@ export class DropZoneImgProductComponent implements OnInit {
   onSelect(event) {
     //console.log(event);
     this.files.push(...event.addedFiles);
+    this.enviarElementos();
   }
 
   onRemove(event) {
     //console.log(event);
     this.files.splice(this.files.indexOf(event), 1);
+    this.enviarElementos();
+  }
+
+  enviarElementos() {
+    this.event.emit(this.files);
   }
 
   imprimir() {
