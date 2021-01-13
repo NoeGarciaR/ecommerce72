@@ -14,13 +14,17 @@ export class DropZoneImgProductComponent implements OnInit {
   }
 
   onSelect(event) {
-    console.log(event);
+    //console.log(event);
     this.files.push(...event.addedFiles);
   }
 
   onRemove(event) {
-    console.log(event);
+    //console.log(event);
     this.files.splice(this.files.indexOf(event), 1);
+  }
+
+  imprimir() {
+    console.log(this.files);
   }
 
 }
