@@ -4,6 +4,7 @@ import { FormProductModalComponent } from './form-product-modal/form-product-mod
 import {TranslateModule} from "@ngx-translate/core";
 import { DropZoneImgProductComponent } from './drop-zone-img-product/drop-zone-img-product.component';
 import {NgxDropzoneModule} from "ngx-dropzone";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -12,10 +13,12 @@ import {NgxDropzoneModule} from "ngx-dropzone";
     exports: [
         FormProductModalComponent
     ],
-  imports: [
-    CommonModule,
-    TranslateModule,
-    NgxDropzoneModule
-  ]
+    imports: [
+        CommonModule,
+        TranslateModule,
+        NgxDropzoneModule,
+        ReactiveFormsModule,
+        FormsModule
+    ]
 })
 export class ProductsModule { }
